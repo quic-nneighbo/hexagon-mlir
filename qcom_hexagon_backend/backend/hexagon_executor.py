@@ -26,9 +26,14 @@ from triton.backends.qcom_hexagon_backend.hexagon_profiler import HexagonProfile
 def _sdk_tool_version(q6_version: str) -> str:
     """Return the SDK prebuilt tool version for the given Hexagon arch version.
 
-    v79+ devices require toolv88; older devices use toolv87.
+    v81+ devices use toolv19; v79-v80 use toolv88; older devices use toolv87.
     """
-    return "v88" if int(q6_version.lstrip("v")) >= 79 else "v87"
+    ver = int(q6_version.lstrip("v"))
+    if ver >= 81:
+        return "v19"
+    if ver >= 79:
+        return "v88"
+    return "v87"
 
 
 def _qhmath_sdk_path(q6_version: str) -> tuple:
