@@ -5,7 +5,7 @@
 # For more license information:
 #   https://github.com/qualcomm/hexagon-mlir/LICENSE.txt
 #
-set -x
+set -ex
 
 export HEXAGON_MLIR_ROOT=$PWD
 export TRITON_ROOT=$PWD/triton
